@@ -21,12 +21,12 @@ public class Program {
 			letters.add(studentLetters);
 		}
 		
-		
-		for(int i = 1; i < letters.size(); i++) {
+		int i = 1;
+		while(letters.size() > 1) {
 			StringBuilder normal = new StringBuilder(letters.get(i - 1));
 			StringBuilder reversed = new StringBuilder(letters.get(i));
 			
-			isEqual = normal == reversed.reverse();
+			isEqual = 0 == normal.compareTo(reversed.reverse());
 			System.out.println(isEqual);
 			System.out.println(normal);
 			System.out.println(reversed);
@@ -36,10 +36,19 @@ public class Program {
 				try {
 					letters.remove(i);
 					letters.remove(i-1);
+					i = 1;
+					
+					
 				} catch (Exception e) {
 					letters.add("FACE");
+					i = 1;
 				}
 			}
+			
+			if (i == amount) {
+				break;
+			}
+			i++;
 		}
 		
 		System.out.println(giftsCount);
