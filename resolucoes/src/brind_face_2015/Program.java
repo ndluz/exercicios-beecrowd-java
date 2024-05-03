@@ -1,56 +1,39 @@
 package brind_face_2015;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Program {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+		String letter = "";
+		int count = 0;
 		int amount = sc.nextInt();
-		
-		if (amount <= 1) {
-			System.exit(1);
-		}
-		
-		int giftsCount = 0;
-		String studentLetters;
-		
-		boolean isEqual = false;
-		
-		List<String> letters = new ArrayList<String>();
-		letters.add("F A C E");
+
+		Stack<String> letters = new Stack<>();
 		
 		for (int i = 0; i <= amount; i++) {
 			
-			studentLetters = sc.nextLine();
-			letters.add(studentLetters);
-			//System.out.println(letters);
+			letter = sc.nextLine();
 			
-			StringBuilder normal = new StringBuilder(letters.get(letters.size() - 2));
-			StringBuilder reversed = new StringBuilder(letters.get(letters.size()- 1));
-			isEqual = 0 == normal.compareTo(reversed.reverse());
+			if (letters.size() == 0) {
+				letters.push("F A C E");
+			}
 			
-			//System.out.println(isEqual);
-			//System.out.println(normal + " normal");
-			//System.out.println(reversed + " reversed");
-			
-			if (isEqual) {
-				giftsCount++;
+			if (!letter.isEmpty()) {
+				StringBuilder previousString = new StringBuilder(letters.peek());
+				StringBuilder reversed = new StringBuilder(letter).reverse();
 				
-				letters.remove(letters.size()-1);
-				letters.remove(letters.size()-1);
-				
-				if (letters.size() == 0) {
-					letters.add("F A C E");
-					continue;
+				if ( 0 == previousString.compareTo(reversed)) {
+					count++;
+					letters.pop();
 					
+				} else {
+					letters.push(letter);
 				}
 			}
-			//System.out.println(letters);
 		}
-		
-		System.out.println(giftsCount);
+		System.out.println(count);
 		sc.close();
 	}
 }
