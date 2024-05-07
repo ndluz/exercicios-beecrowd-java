@@ -9,18 +9,38 @@ public class Program {
 		Scanner sc = new Scanner(System.in);
 		String entry;
 		String[] aux;
+		String homeText = "";
 		boolean isHome = false;
 		LinkedList<String> res =  new LinkedList<>();
 		
 		while(sc.hasNext()) {
 			entry = sc.nextLine();
 			aux = entry.split("");
-			for (int i = 0; i < aux.length; i++) {
-				
-			
-			
-			}
-		}
 		
+			for (int i = 0; i < aux.length; i++) {
+				if (aux[i].compareTo("[") == 0){
+					isHome = true;
+					continue;
+				}
+				
+				if (aux[i].compareTo("]") == 0) {
+					isHome = false;
+					res.addFirst(homeText);
+					homeText = "";
+					continue;
+				}
+				
+				if (isHome) {
+					homeText += aux[i];
+					res.indexOf(i + " teste");
+					continue;
+				}
+				res.add(aux[i]);
+				
+			}
+			res.forEach( item -> System.out.print(item));
+			res.clear();
+		}
+		sc.close();
 	}
 }
