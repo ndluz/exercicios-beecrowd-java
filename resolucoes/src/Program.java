@@ -1,4 +1,4 @@
-package brind_face_2015_1944;
+package brind_face_2015;
 
 import java.util.Scanner;
 import java.util.Stack;
