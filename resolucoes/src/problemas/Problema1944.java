@@ -1,9 +1,9 @@
-package brind_face_2015_1944;
+package problemas;
 
 import java.util.Scanner;
 import java.util.Stack;
 
-public class Program {
+public class Problema1944 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		String letter = "";
